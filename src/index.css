@@ -1,0 +1,621 @@
+/* =========================================================
+   MODERN DESIGN SYSTEM - DIGITAL MARKETING AGENCY
+   Professional | Vibrant | Smooth Interactions
+========================================================= */
+
+:root {
+  /* Primary Brand Colors - Professional & Energetic */
+  --primary-navy: #0A2540;
+  --primary-teal: #2B9A8E;
+  --primary-blue: #4A90E2;
+  --accent-orange: #F5A623;
+  --accent-coral: #FF6B6B;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--primary-teal) 0%, var(--primary-blue) 100%);
+  --gradient-dark: linear-gradient(135deg, var(--primary-navy) 0%, #1A3A4A 100%);
+  --gradient-accent: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-coral) 100%);
+  
+  /* Backgrounds */
+  --bg-light: #F8F9FC;
+  --bg-white: #FFFFFF;
+  --bg-dark: #0A2540;
+  
+  /* Text Colors */
+  --text-dark: #1A2B3E;
+  --text-gray: #4A5568;
+  --text-light: #718096;
+  --text-white: #FFFFFF;
+  
+  /* Borders & Shadows */
+  --border-light: #E2E8F0;
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+  --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  
+  /* Spacing */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+/* =========================================================
+   GLOBAL STYLES
+========================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   BUTTON SYSTEM - Modern, Interactive, Hover Effects
+========================================================= */
+button, .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  font-family: inherit;
+  border-radius: var(--radius-full);
+  transition: var(--transition-slow);
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Primary Button */
+.btn-primary, button.btn-primary {
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary::before, button.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+  z-index: -1;
+}
+
+.btn-primary:hover, button.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--primary-teal);
+  color: var(--primary-teal);
+}
+
+.btn-secondary:hover {
+  background: var(--primary-teal);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Outline Button */
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--border-light);
+  color: var(--text-gray);
+}
+
+.btn-outline:hover {
+  border-color: var(--primary-teal);
+  color: var(--primary-teal);
+  transform: translateY(-2px);
+  background: rgba(43, 154, 142, 0.05);
+}
+
+/* Ghost Button */
+.btn-ghost {
+  background: transparent;
+  color: var(--text-gray);
+}
+
+.btn-ghost:hover {
+  background: rgba(0, 0, 0, 0.04);
+  transform: translateY(-1px);
+}
+
+/* Link Button Component */
+.link-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  background: var(--gradient-primary);
+  color: white;
+  text-decoration: none;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: var(--transition-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.link-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  gap: 0.75rem;
+}
+
+/* =========================================================
+   NAVBAR - Sticky with Blur Effect
+========================================================= */
+nav, .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-light);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all var(--transition-base);
+}
+
+nav ul, .navbar-nav {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav a, .nav-link {
+  text-decoration: none;
+  color: var(--text-gray);
+  font-weight: 500;
+  transition: var(--transition-base);
+  position: relative;
+}
+
+nav a:hover, .nav-link:hover {
+  color: var(--primary-teal);
+}
+
+nav a::after, .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: width var(--transition-base);
+}
+
+nav a:hover::after, .nav-link:hover::after {
+  width: 100%;
+}
+
+.menu-toggle {
+  display: none;
+  background: transparent;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  color: var(--primary-navy);
+}
+
+/* =========================================================
+   PAGE CONTAINER
+========================================================= */
+.page, .container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* =========================================================
+   CARD SYSTEM - Modern, Interactive, Hover Effects
+========================================================= */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+.card {
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  transition: var(--transition-slow);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transition: transform var(--transition-base);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  margin-bottom: 1rem;
+  transition: transform var(--transition-base);
+}
+
+.card:hover img {
+  transform: scale(1.02);
+}
+
+.card h3, .card h4 {
+  margin: 1rem 0 0.5rem;
+  color: var(--text-dark);
+}
+
+.card p {
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+/* =========================================================
+   FORM SYSTEM - Clean & Professional
+========================================================= */
+.form-container {
+  max-width: 560px;
+  margin: 2rem auto;
+  background: var(--bg-white);
+  padding: 2.5rem;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-light);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 0.9rem;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: var(--transition-base);
+  background: var(--bg-white);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--primary-teal);
+  box-shadow: 0 0 0 3px rgba(43, 154, 142, 0.1);
+}
+
+/* =========================================================
+   TABLE SYSTEM - Modern Data Display
+========================================================= */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th {
+  background: var(--gradient-dark);
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-gray);
+}
+
+table tbody tr {
+  transition: var(--transition-fast);
+}
+
+table tbody tr:hover {
+  background: rgba(43, 154, 142, 0.05);
+  transform: scale(1.01);
+}
+
+/* Zebra striping for better readability */
+table tbody tr:nth-child(even) {
+  background: var(--bg-light);
+}
+
+/* =========================================================
+   FOOTER - Professional Bottom Section
+========================================================= */
+footer {
+  background: var(--gradient-dark);
+  color: var(--text-white);
+  padding: 3rem 2rem 1.5rem;
+  margin-top: 4rem;
+}
+
+.footer-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.footer-section h4 {
+  margin-bottom: 1.25rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.footer-section p, .footer-section a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  line-height: 1.8;
+  transition: var(--transition-base);
+}
+
+.footer-section a:hover {
+  color: var(--accent-orange);
+  padding-left: 0.25rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transition: var(--transition-base);
+}
+
+.social-icons a:hover {
+  background: var(--accent-orange);
+  transform: translateY(-3px);
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* =========================================================
+   HERO SECTION - Eye-catching & Vibrant
+========================================================= */
+.hero {
+  background: var(--gradient-dark);
+  color: white;
+  padding: 5rem 2rem;
+  text-align: center;
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff, var(--accent-orange));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  opacity: 0.9;
+}
+
+/* =========================================================
+   STATS SECTION - Social Proof
+========================================================= */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.stat-card {
+  background: var(--bg-white);
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  transition: var(--transition-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  color: var(--text-gray);
+  font-weight: 500;
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  
+  nav ul, .navbar-nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    padding: 1rem;
+    box-shadow: var(--shadow-md);
+    gap: 1rem;
+  }
+  
+  nav ul.open, .navbar-nav.open {
+    display: flex;
+  }
+  
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .social-icons {
+    justify-content: center;
+  }
+  
+  .form-container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+}
+
+/* =========================================================
+   UTILITY CLASSES
+========================================================= */
+.text-center { text-align: center; }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-teal);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-blue);
+}
