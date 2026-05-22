@@ -1,171 +1,140 @@
-import { Link } from "react-router-dom";
+import Navbar from "../../components/Navbar/page";
+import Footer from "../../components/Footer/page";  // ✅ FIX 3: reuse Footer component
 
 export default function ContactPage() {
-
-  function toggleMenu() {
-    console.log("Menu toggled");
-  }
-
   return (
-    <>
+   <div className="min-h-screen">
+
       {/* NAVBAR */}
-      <nav>
+      <Navbar />
 
-        <Link to="/">
-          <h2>Digital Marketing Agency</h2>
-        </Link>
+      {/* CONTACT SECTION */}
+      <main className="flex-1 flex items-center justify-center px-6 py-16">
 
-        <button
-          className="menu-toggle"
-          onClick={toggleMenu}
-        >
-          ☰
-        </button>
+        <div className="w-full max-w-3xl bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl p-8 md:p-12">
 
-        <ul>
+          {/* HEADER */}
+          <div className="text-center mb-10">
 
-          <li>
-            <Link to="/">Home</Link>
-          </li>
+            <h2 className="text-5xl font-bold text-cyan-400 mb-4">
+              Contact Us
+            </h2>
 
-          <li>
-            <Link to="/services">Services</Link>
-          </li>
+            <p className="text-slate-300 text-lg">
+              Have questions? Send us a message.
+            </p>
 
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
+          </div>
 
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
+          {/* ✅ FIX 1: added onSubmit to prevent full page reload */}
+          <form
+            className="space-y-6"
+            onSubmit={(e) => e.preventDefault()}
+          >
 
-        </ul>
-
-      </nav>
-
-      {/* CONTACT FORM */}
-      <div className="page">
-
-        <div className="form-container">
-
-          <h2>Contact Us</h2>
-
-          <p>
-            Have questions? Send us a message.
-          </p>
-
-          <form>
-
+            {/* FULL NAME */}
             <div>
-              <label>Full Name</label>
+
+              <label className="block mb-2 text-slate-300 font-medium">
+                Full Name
+              </label>
 
               <input
                 type="text"
                 placeholder="Enter your name"
                 required
+                className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400"
               />
+
             </div>
 
+            {/* EMAIL */}
             <div>
-              <label>Email</label>
+
+              <label className="block mb-2 text-slate-300 font-medium">
+                Email
+              </label>
 
               <input
                 type="email"
                 placeholder="Enter your email"
                 required
+                className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400"
               />
+
             </div>
 
+            {/* SELECT SERVICE */}
             <div>
-              <label>Service Interested In</label>
 
-              <select required>
+              <label className="block mb-2 text-slate-300 font-medium">
+                Service Interested In
+              </label>
+
+              {/* ✅ FIX 2: added value="" to all options so form data is readable */}
+              <select
+                required
+                className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400"
+              >
                 <option value="">
                   Select a service
                 </option>
 
-                <option>
+                <option value="seo">
                   SEO Optimization
                 </option>
 
-                <option>
+                <option value="social-media">
                   Social Media Marketing
                 </option>
 
-                <option>
+                <option value="paid-ads">
                   Paid Advertising
                 </option>
 
-                <option>
+                <option value="content">
                   Content Marketing
                 </option>
 
-                <option>
+                <option value="email">
                   Email Marketing
                 </option>
+
               </select>
+
             </div>
 
+            {/* MESSAGE */}
             <div>
-              <label>Message</label>
+
+              <label className="block mb-2 text-slate-300 font-medium">
+                Message
+              </label>
 
               <textarea
-                rows={4}
+                rows={5}
                 placeholder="Write your message..."
                 required
+                className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 resize-none"
               ></textarea>
+
             </div>
 
-            <button type="submit">
+            {/* BUTTON */}
+            <button
+              type="submit"
+              className="w-full bg-cyan-500 hover:bg-cyan-400 text-black font-bold py-4 rounded-xl transition duration-300 hover:scale-[1.02]"
+            >
               Send Message
             </button>
 
           </form>
-
         </div>
-      </div>
+      </main>
 
-      {/* FOOTER */}
-      <footer>
+      {/* ✅ FIX 3: use shared Footer instead of copy-pasted code */}
+      <Footer />
 
-        <div className="footer-container">
-
-          <div>
-            <h3>Digital Marketing Agency</h3>
-
-            <p>
-              We’re here to help your business grow.
-            </p>
-          </div>
-
-          <div>
-            <h3>Quick Links</h3>
-
-            <p>
-              <Link to="/">Home</Link>
-            </p>
-
-            <p>
-              <Link to="/services">Services</Link>
-            </p>
-
-            <p>
-              <Link to="/dashboard">Dashboard</Link>
-            </p>
-          </div>
-
-          <div>
-            <h3>Contact Info</h3>
-
-            <p>Email: info@dma.com</p>
-
-            <p>Phone: +123456789</p>
-          </div>
-
-        </div>
-
-      </footer>
-    </>
+    </div>
   );
 }
